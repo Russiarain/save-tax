@@ -6,9 +6,12 @@ function net_salary = remove_insurance(salary)
     
     bounds = [4927, 28017];
     if salary < bounds(1)
-        salary = bounds(1);
+        base = bounds(1);
     elseif salary > bounds(2)
-        salary = bounds(2);
+        base = bounds(2);
+    else
+        base = salary;
     end
-    net_salary = salary * (1-(er+mr+ur+hr)/100);
+
+    net_salary = salary - base * (er+mr+ur+hr)/100;
 end
